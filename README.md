@@ -21,4 +21,4 @@ npm run dev
 ## License
 MIT
 
-Maintained by Sony Arianto Kurniawan <<sony@sony-ak.com>> and contributors
+Maintained by Sony Arianto Kurniawan <<sony@sony-ak.com>> and contributors.
