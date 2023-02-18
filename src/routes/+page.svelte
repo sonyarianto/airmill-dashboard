@@ -959,7 +959,7 @@
 				<!-- CTA -->
 				<a
 					class="mb-8 flex items-center justify-between rounded-lg bg-purple-600 p-4 text-sm font-semibold text-purple-100 shadow-md focus:outline-none focus:ring"
-					href="https://github.com/estevanmaito/windmill-dashboard"
+					href="https://github.com/sonyarianto/airmill-dashboard"
 				>
 					<div class="flex items-center">
 						<svg class="mr-2 h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
