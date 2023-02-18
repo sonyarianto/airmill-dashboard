@@ -1,0 +1,1509 @@
+<script lang="ts">
+	import { onMount } from 'svelte';
+
+	let isSideMenuOpen = false;
+	let isPagesMenuOpen = false;
+	let dark = false;
+	let isNotificationsMenuOpen = false;
+	let isProfileMenuOpen = false;
+
+	function toggleProfileMenu() {
+		isProfileMenuOpen = !isProfileMenuOpen;
+	}
+
+	function toggleNotificationsMenu() {
+		isNotificationsMenuOpen = !isNotificationsMenuOpen;
+	}
+
+	function toggleTheme() {
+		dark = !dark;
+	}
+
+	function toggleSideMenu() {
+		isSideMenuOpen = !isSideMenuOpen;
+	}
+
+	function closeSideMenu() {
+		isSideMenuOpen = false;
+	}
+
+	function togglePagesMenu() {
+		isPagesMenuOpen = !isPagesMenuOpen;
+	}
+
+	onMount(() => {
+		/**
+		 * For usage, visit Chart.js docs https://www.chartjs.org/docs/latest/
+		 */
+		const pieConfig = {
+			type: 'doughnut',
+			data: {
+				datasets: [
+					{
+						data: [33, 33, 33],
+						/**
+						 * These colors come from Tailwind CSS palette
+						 * https://tailwindcss.com/docs/customizing-colors/#default-color-palette
+						 */
+						backgroundColor: ['#0694a2', '#1c64f2', '#7e3af2'],
+						label: 'Dataset 1'
+					}
+				],
+				labels: ['Shoes', 'Shirts', 'Bags']
+			},
+			options: {
+				responsive: true,
+				cutoutPercentage: 80,
+				/**
+				 * Default legends are ugly and impossible to style.
+				 * See examples in charts.html to add your own legends
+				 *  */
+				legend: {
+					display: false
+				}
+			}
+		};
+
+		// change this to the id of your chart element in HMTL
+		const pieCtx = document.getElementById('pie');
+		// window.myPie = new Chart(pieCtx, pieConfig);
+		let myPie = new Chart(pieCtx, pieConfig);
+
+		// ------------------------------
+
+		/**
+		 * For usage, visit Chart.js docs https://www.chartjs.org/docs/latest/
+		 */
+		const lineConfig = {
+			type: 'line',
+			data: {
+				labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+				datasets: [
+					{
+						label: 'Organic',
+						/**
+						 * These colors come from Tailwind CSS palette
+						 * https://tailwindcss.com/docs/customizing-colors/#default-color-palette
+						 */
+						backgroundColor: '#0694a2',
+						borderColor: '#0694a2',
+						data: [43, 48, 40, 54, 67, 73, 70],
+						fill: false
+					},
+					{
+						label: 'Paid',
+						fill: false,
+						/**
+						 * These colors come from Tailwind CSS palette
+						 * https://tailwindcss.com/docs/customizing-colors/#default-color-palette
+						 */
+						backgroundColor: '#7e3af2',
+						borderColor: '#7e3af2',
+						data: [24, 50, 64, 74, 52, 51, 65]
+					}
+				]
+			},
+			options: {
+				responsive: true,
+				/**
+				 * Default legends are ugly and impossible to style.
+				 * See examples in charts.html to add your own legends
+				 *  */
+				legend: {
+					display: false
+				},
+				tooltips: {
+					mode: 'index',
+					intersect: false
+				},
+				hover: {
+					mode: 'nearest',
+					intersect: true
+				},
+				scales: {
+					x: {
+						display: true,
+						scaleLabel: {
+							display: true,
+							labelString: 'Month'
+						}
+					},
+					y: {
+						display: true,
+						scaleLabel: {
+							display: true,
+							labelString: 'Value'
+						}
+					}
+				}
+			}
+		};
+
+		// change this to the id of your chart element in HMTL
+		const lineCtx = document.getElementById('line');
+		let myLine = new Chart(lineCtx, lineConfig);
+	});
+</script>
+
+<svelte:head>
+	<title>Home</title>
+	<link
+		rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css"
+	/>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" defer></script>
+</svelte:head>
+
+<div class="flex h-screen bg-gray-50 dark:bg-gray-900" class:overflow-hidden={!isSideMenuOpen}>
+	<!-- Desktop sidebar -->
+	<aside
+		class="z-20 hidden w-64 flex-shrink-0 overflow-y-auto border-r-[1px] border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-800 md:block"
+	>
+		<div class="py-4 text-gray-500 dark:text-gray-400">
+			<!-- svelte-ignore a11y-invalid-attribute -->
+			<a class="ml-6 text-lg font-bold text-gray-800 dark:text-gray-200" href=""> Sepoy </a>
+			<ul class="mt-6">
+				<li class="relative px-6 py-3">
+					<span
+						class="absolute inset-y-0 left-0 w-1 rounded-tr-lg rounded-br-lg bg-purple-600"
+						aria-hidden="true"
+					/>
+					<a
+						class="inline-flex w-full items-center text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800 dark:text-gray-100 dark:hover:text-gray-200"
+						href="index.html"
+					>
+						<svg
+							class="h-5 w-5"
+							aria-hidden="true"
+							fill="none"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="2"
+							viewBox="0 0 24 24"
+							stroke="currentColor"
+						>
+							<path
+								d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+							/>
+						</svg>
+						<span class="ml-4">Dashboard</span>
+					</a>
+				</li>
+			</ul>
+			<ul>
+				<li class="relative px-6 py-3">
+					<a
+						class="inline-flex w-full items-center text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+						href="forms.html"
+					>
+						<svg
+							class="h-5 w-5"
+							aria-hidden="true"
+							fill="none"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="2"
+							viewBox="0 0 24 24"
+							stroke="currentColor"
+						>
+							<path
+								d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"
+							/>
+						</svg>
+						<span class="ml-4">Forms</span>
+					</a>
+				</li>
+				<li class="relative px-6 py-3">
+					<a
+						class="inline-flex w-full items-center text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+						href="cards.html"
+					>
+						<svg
+							class="h-5 w-5"
+							aria-hidden="true"
+							fill="none"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="2"
+							viewBox="0 0 24 24"
+							stroke="currentColor"
+						>
+							<path
+								d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
+							/>
+						</svg>
+						<span class="ml-4">Cards</span>
+					</a>
+				</li>
+				<li class="relative px-6 py-3">
+					<a
+						class="inline-flex w-full items-center text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+						href="charts.html"
+					>
+						<svg
+							class="h-5 w-5"
+							aria-hidden="true"
+							fill="none"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="2"
+							viewBox="0 0 24 24"
+							stroke="currentColor"
+						>
+							<path d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z" />
+							<path d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z" />
+						</svg>
+						<span class="ml-4">Charts</span>
+					</a>
+				</li>
+				<li class="relative px-6 py-3">
+					<a
+						class="inline-flex w-full items-center text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+						href="buttons.html"
+					>
+						<svg
+							class="h-5 w-5"
+							aria-hidden="true"
+							fill="none"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="2"
+							viewBox="0 0 24 24"
+							stroke="currentColor"
+						>
+							<path
+								d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"
+							/>
+						</svg>
+						<span class="ml-4">Buttons</span>
+					</a>
+				</li>
+				<li class="relative px-6 py-3">
+					<a
+						class="inline-flex w-full items-center text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+						href="modals.html"
+					>
+						<svg
+							class="h-5 w-5"
+							aria-hidden="true"
+							fill="none"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="2"
+							viewBox="0 0 24 24"
+							stroke="currentColor"
+						>
+							<path
+								d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
+							/>
+						</svg>
+						<span class="ml-4">Modals</span>
+					</a>
+				</li>
+				<li class="relative px-6 py-3">
+					<a
+						class="inline-flex w-full items-center text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+						href="tables.html"
+					>
+						<svg
+							class="h-5 w-5"
+							aria-hidden="true"
+							fill="none"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="2"
+							viewBox="0 0 24 24"
+							stroke="currentColor"
+						>
+							<path d="M4 6h16M4 10h16M4 14h16M4 18h16" />
+						</svg>
+						<span class="ml-4">Tables</span>
+					</a>
+				</li>
+				<li class="relative px-6 py-3">
+					<button
+						class="inline-flex w-full items-center justify-between text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+						on:click={togglePagesMenu}
+						aria-haspopup="true"
+					>
+						<span class="inline-flex items-center">
+							<svg
+								class="h-5 w-5"
+								aria-hidden="true"
+								fill="none"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2"
+								viewBox="0 0 24 24"
+								stroke="currentColor"
+							>
+								<path
+									d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"
+								/>
+							</svg>
+							<span class="ml-4">Pages</span>
+						</span>
+						<svg class="h-4 w-4" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+							<path
+								fill-rule="evenodd"
+								d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+								clip-rule="evenodd"
+							/>
+						</svg>
+					</button>
+					{#if isPagesMenuOpen}
+						<!-- <template x-if="isPagesMenuOpen"> -->
+						<ul
+							class="mt-2 space-y-2 overflow-hidden rounded-md bg-gray-50 p-2 text-sm font-medium text-gray-500 shadow-inner dark:bg-gray-900 dark:text-gray-400"
+							aria-label="submenu"
+						>
+							<!-- <ul
+                  x-transition:enter="transition-all ease-in-out duration-300"
+                  x-transition:enter-start="opacity-25 max-h-0"
+                  x-transition:enter-end="opacity-100 max-h-xl"
+                  x-transition:leave="transition-all ease-in-out duration-300"
+                  x-transition:leave-start="opacity-100 max-h-xl"
+                  x-transition:leave-end="opacity-0 max-h-0"
+                  class="p-2 mt-2 space-y-2 overflow-hidden text-sm font-medium text-gray-500 rounded-md shadow-inner bg-gray-50 dark:text-gray-400 dark:bg-gray-900"
+                  aria-label="submenu"
+                > -->
+							<li
+								class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+							>
+								<a class="w-full" href="pages/login.html">Login</a>
+							</li>
+							<li
+								class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+							>
+								<a class="w-full" href="pages/create-account.html"> Create account </a>
+							</li>
+							<li
+								class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+							>
+								<a class="w-full" href="pages/forgot-password.html"> Forgot password </a>
+							</li>
+							<li
+								class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+							>
+								<a class="w-full" href="pages/404.html">404</a>
+							</li>
+							<li
+								class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+							>
+								<a class="w-full" href="pages/blank.html">Blank</a>
+							</li>
+						</ul>
+						<!-- </template> -->
+					{/if}
+				</li>
+			</ul>
+			<div class="my-6 px-6">
+				<button
+					class="flex w-full items-center justify-between rounded-lg border border-transparent bg-purple-600 px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 hover:bg-purple-700 focus:outline-none focus:ring-[3px] focus:ring-purple-200 active:bg-purple-600"
+				>
+					Create account
+					<span class="ml-2" aria-hidden="true">+</span>
+				</button>
+			</div>
+		</div>
+	</aside>
+	<!-- Mobile sidebar -->
+	<!-- Backdrop -->
+	<div
+		class:hidden={!isSideMenuOpen}
+		class="fixed inset-0 z-10 flex items-end bg-black bg-opacity-50 sm:items-center sm:justify-center"
+	/>
+	<!-- <div
+        x-show="isSideMenuOpen"
+        x-transition:enter="transition ease-in-out duration-150"
+        x-transition:enter-start="opacity-0"
+        x-transition:enter-end="opacity-100"
+        x-transition:leave="transition ease-in-out duration-150"
+        x-transition:leave-start="opacity-100"
+        x-transition:leave-end="opacity-0"
+        class="fixed inset-0 z-10 flex items-end bg-black bg-opacity-50 sm:items-center sm:justify-center"
+      ></div> -->
+	<!-- <aside
+        class="fixed inset-y-0 z-20 flex-shrink-0 w-64 mt-16 overflow-y-auto bg-white dark:bg-gray-800 md:hidden"
+        class:hidden={isSideMenuOpen}
+        x-transition:enter="transition ease-in-out duration-150"
+        x-transition:enter-start="opacity-0 transform -translate-x-20"
+        x-transition:enter-end="opacity-100"
+        x-transition:leave="transition ease-in-out duration-150"
+        x-transition:leave-start="opacity-100"
+        x-transition:leave-end="opacity-0 transform -translate-x-20"
+        @click.away="closeSideMenu"
+        @keydown.escape="closeSideMenu"
+      > -->
+	<aside
+		class="fixed inset-y-0 z-20 mt-16 w-64 flex-shrink-0 overflow-y-auto bg-white dark:bg-gray-800 md:hidden"
+		class:hidden={!isSideMenuOpen}
+	>
+		<div class="py-4 text-gray-500 dark:text-gray-400">
+			<!-- svelte-ignore a11y-invalid-attribute -->
+			<a class="ml-6 text-lg font-bold text-gray-800 dark:text-gray-200" href=""> Windmill </a>
+			<ul class="mt-6">
+				<li class="relative px-6 py-3">
+					<span
+						class="absolute inset-y-0 left-0 w-1 rounded-tr-lg rounded-br-lg bg-purple-600"
+						aria-hidden="true"
+					/>
+					<a
+						class="inline-flex w-full items-center text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800 dark:text-gray-100 dark:hover:text-gray-200"
+						href="index.html"
+					>
+						<svg
+							class="h-5 w-5"
+							aria-hidden="true"
+							fill="none"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="2"
+							viewBox="0 0 24 24"
+							stroke="currentColor"
+						>
+							<path
+								d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+							/>
+						</svg>
+						<span class="ml-4">Dashboard</span>
+					</a>
+				</li>
+			</ul>
+			<ul>
+				<li class="relative px-6 py-3">
+					<a
+						class="inline-flex w-full items-center text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+						href="forms.html"
+					>
+						<svg
+							class="h-5 w-5"
+							aria-hidden="true"
+							fill="none"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="2"
+							viewBox="0 0 24 24"
+							stroke="currentColor"
+						>
+							<path
+								d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"
+							/>
+						</svg>
+						<span class="ml-4">Forms</span>
+					</a>
+				</li>
+				<li class="relative px-6 py-3">
+					<a
+						class="inline-flex w-full items-center text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+						href="cards.html"
+					>
+						<svg
+							class="h-5 w-5"
+							aria-hidden="true"
+							fill="none"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="2"
+							viewBox="0 0 24 24"
+							stroke="currentColor"
+						>
+							<path
+								d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
+							/>
+						</svg>
+						<span class="ml-4">Cards</span>
+					</a>
+				</li>
+				<li class="relative px-6 py-3">
+					<a
+						class="inline-flex w-full items-center text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+						href="charts.html"
+					>
+						<svg
+							class="h-5 w-5"
+							aria-hidden="true"
+							fill="none"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="2"
+							viewBox="0 0 24 24"
+							stroke="currentColor"
+						>
+							<path d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z" />
+							<path d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z" />
+						</svg>
+						<span class="ml-4">Charts</span>
+					</a>
+				</li>
+				<li class="relative px-6 py-3">
+					<a
+						class="inline-flex w-full items-center text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+						href="buttons.html"
+					>
+						<svg
+							class="h-5 w-5"
+							aria-hidden="true"
+							fill="none"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="2"
+							viewBox="0 0 24 24"
+							stroke="currentColor"
+						>
+							<path
+								d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"
+							/>
+						</svg>
+						<span class="ml-4">Buttons</span>
+					</a>
+				</li>
+				<li class="relative px-6 py-3">
+					<a
+						class="inline-flex w-full items-center text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+						href="modals.html"
+					>
+						<svg
+							class="h-5 w-5"
+							aria-hidden="true"
+							fill="none"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="2"
+							viewBox="0 0 24 24"
+							stroke="currentColor"
+						>
+							<path
+								d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
+							/>
+						</svg>
+						<span class="ml-4">Modals</span>
+					</a>
+				</li>
+				<li class="relative px-6 py-3">
+					<a
+						class="inline-flex w-full items-center text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+						href="tables.html"
+					>
+						<svg
+							class="h-5 w-5"
+							aria-hidden="true"
+							fill="none"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="2"
+							viewBox="0 0 24 24"
+							stroke="currentColor"
+						>
+							<path d="M4 6h16M4 10h16M4 14h16M4 18h16" />
+						</svg>
+						<span class="ml-4">Tables</span>
+					</a>
+				</li>
+				<li class="relative px-6 py-3">
+					<button
+						class="inline-flex w-full items-center justify-between text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+						on:click={togglePagesMenu}
+						aria-haspopup="true"
+					>
+						<span class="inline-flex items-center">
+							<svg
+								class="h-5 w-5"
+								aria-hidden="true"
+								fill="none"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2"
+								viewBox="0 0 24 24"
+								stroke="currentColor"
+							>
+								<path
+									d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"
+								/>
+							</svg>
+							<span class="ml-4">Pages</span>
+						</span>
+						<svg class="h-4 w-4" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+							<path
+								fill-rule="evenodd"
+								d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+								clip-rule="evenodd"
+							/>
+						</svg>
+					</button>
+					{#if isPagesMenuOpen}
+						<!-- <template x-if="isPagesMenuOpen"> -->
+						<!-- <ul
+                  x-transition:enter="transition-all ease-in-out duration-300"
+                  x-transition:enter-start="opacity-25 max-h-0"
+                  x-transition:enter-end="opacity-100 max-h-xl"
+                  x-transition:leave="transition-all ease-in-out duration-300"
+                  x-transition:leave-start="opacity-100 max-h-xl"
+                  x-transition:leave-end="opacity-0 max-h-0"
+                  class="p-2 mt-2 space-y-2 overflow-hidden text-sm font-medium text-gray-500 rounded-md shadow-inner bg-gray-50 dark:text-gray-400 dark:bg-gray-900"
+                  aria-label="submenu"
+                > -->
+						<ul
+							class="mt-2 space-y-2 overflow-hidden rounded-md bg-gray-50 p-2 text-sm font-medium text-gray-500 shadow-inner dark:bg-gray-900 dark:text-gray-400"
+							aria-label="submenu"
+						>
+							<li
+								class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+							>
+								<a class="w-full" href="pages/login.html">Login</a>
+							</li>
+							<li
+								class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+							>
+								<a class="w-full" href="pages/create-account.html"> Create account </a>
+							</li>
+							<li
+								class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+							>
+								<a class="w-full" href="pages/forgot-password.html"> Forgot password </a>
+							</li>
+							<li
+								class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+							>
+								<a class="w-full" href="pages/404.html">404</a>
+							</li>
+							<li
+								class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+							>
+								<a class="w-full" href="pages/blank.html">Blank</a>
+							</li>
+						</ul>
+						<!-- </template> -->
+					{/if}
+				</li>
+			</ul>
+			<div class="my-6 px-6">
+				<button
+					class="flex items-center justify-between rounded-lg border border-transparent bg-purple-600 px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 hover:bg-purple-700 focus:outline-none focus:ring-[3px] focus:ring-purple-200 active:bg-purple-600"
+				>
+					Create account
+					<span class="ml-2" aria-hidden="true">+</span>
+				</button>
+			</div>
+		</div>
+	</aside>
+	<div class="flex w-full flex-1 flex-col">
+		<!-- <header class="z-10 py-4 bg-white shadow-md dark:bg-gray-800"> -->
+		<header
+			class="z-10 border-b-[1px] border-gray-200 bg-white py-4 shadow-sm dark:border-gray-700 dark:bg-gray-800"
+		>
+			<div
+				class="container mx-auto flex h-full items-center justify-between px-6 text-purple-600 dark:text-purple-300"
+			>
+				<!-- Mobile hamburger -->
+				<button
+					class="mr-5 -ml-1 rounded-md p-1 focus:outline-none focus:ring-[3px] focus:ring-purple-200 md:hidden"
+					on:click={toggleSideMenu}
+					aria-label="Menu"
+				>
+					<svg class="h-6 w-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+						<path
+							fill-rule="evenodd"
+							d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+							clip-rule="evenodd"
+						/>
+					</svg>
+				</button>
+				<!-- Search input -->
+				<div class="flex flex-1 justify-center lg:mr-32">
+					<div class="relative mr-6 w-full max-w-xl focus-within:text-purple-500">
+						<div class="absolute inset-y-0 flex items-center pl-2">
+							<svg class="h-4 w-4" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+								<path
+									fill-rule="evenodd"
+									d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+									clip-rule="evenodd"
+								/>
+							</svg>
+						</div>
+						<input
+							class="dark:focus:ring-gray form-input w-full rounded-md border-0 bg-gray-100 pl-8 pr-2 text-sm text-gray-700 placeholder-gray-600 focus:border-purple-300 focus:bg-white focus:placeholder-gray-500 focus:outline-none focus:ring-[3px] focus:ring-purple-200 dark:bg-gray-700 dark:text-gray-200 dark:placeholder-gray-500 dark:focus:placeholder-gray-600"
+							type="text"
+							placeholder="Search..."
+							aria-label="Search..."
+						/>
+					</div>
+				</div>
+				<ul class="flex flex-shrink-0 items-center space-x-6">
+					<!-- Theme toggler -->
+					<li class="flex">
+						<button
+							class="rounded-md focus:outline-none focus:ring-[3px] focus:ring-purple-200"
+							on:click={toggleTheme}
+							aria-label="Toggle color mode"
+						>
+							{#if !dark}
+								<!-- <template x-if="!dark"> -->
+								<svg class="h-5 w-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+									<path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+								</svg>
+								<!-- </template> -->
+							{/if}
+							{#if dark}
+								<!-- <template x-if="dark"> -->
+								<svg class="h-5 w-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+									<path
+										fill-rule="evenodd"
+										d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+										clip-rule="evenodd"
+									/>
+								</svg>
+								<!-- </template> -->
+							{/if}
+						</button>
+					</li>
+					<!-- Notifications menu -->
+					<li class="relative">
+						<!-- <button
+                  class="relative align-middle rounded-md focus:outline-none focus:ring-purple"
+                  x-on:click="toggleNotificationsMenu"
+                  x-on:click.away="isNotificationsMenuOpen = false"
+                  x-on:keydown.escape="isNotificationsMenuOpen = false"
+                  aria-label="Notifications"
+                  aria-haspopup="true"
+                > -->
+						<button
+							class="relative rounded-md align-middle focus:outline-none focus:ring-[3px] focus:ring-purple-200"
+							on:click={toggleNotificationsMenu}
+							aria-label="Notifications"
+							aria-haspopup="true"
+						>
+							<svg class="h-5 w-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+								<path
+									d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z"
+								/>
+							</svg>
+							<!-- Notification badge -->
+							<span
+								aria-hidden="true"
+								class="absolute top-0 right-0 inline-block h-3 w-3 translate-x-1 -translate-y-1 transform rounded-full border-2 border-white bg-red-600 dark:border-gray-800"
+							/>
+						</button>
+						{#if isNotificationsMenuOpen}
+							<!-- <template x-if="isNotificationsMenuOpen"> -->
+							<!-- <ul
+                    x-transition:leave="transition ease-in duration-150"
+                    x-transition:leave-start="opacity-100"
+                    x-transition:leave-end="opacity-0"
+                    x-on:click.away="!isNotificationsMenuOpen"
+                    x-on:keydown.escape="!isNotificationsMenuOpen"
+                    class="absolute right-0 w-56 p-2 mt-2 space-y-2 text-gray-600 bg-white border border-gray-100 rounded-md shadow-md dark:text-gray-300 dark:border-gray-700 dark:bg-gray-700"
+                  > -->
+							<ul
+								class="absolute right-0 mt-2 w-56 space-y-2 rounded-md border border-gray-100 bg-white p-2 text-gray-600 shadow-md dark:border-gray-700 dark:bg-gray-700 dark:text-gray-300"
+							>
+								<li class="flex">
+									<!-- svelte-ignore a11y-invalid-attribute -->
+									<a
+										class="inline-flex w-full items-center justify-between rounded-md px-2 py-1 text-sm font-semibold transition-colors duration-150 hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
+										href=""
+									>
+										<span>Messages</span>
+										<span
+											class="inline-flex items-center justify-center rounded-full bg-red-100 px-2 py-1 text-xs font-bold leading-none text-red-600 dark:bg-red-600 dark:text-red-100"
+										>
+											13
+										</span>
+									</a>
+								</li>
+								<li class="flex">
+									<!-- svelte-ignore a11y-invalid-attribute -->
+									<a
+										class="inline-flex w-full items-center justify-between rounded-md px-2 py-1 text-sm font-semibold transition-colors duration-150 hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
+										href=""
+									>
+										<span>Sales</span>
+										<span
+											class="inline-flex items-center justify-center rounded-full bg-red-100 px-2 py-1 text-xs font-bold leading-none text-red-600 dark:bg-red-600 dark:text-red-100"
+										>
+											2
+										</span>
+									</a>
+								</li>
+								<li class="flex">
+									<!-- svelte-ignore a11y-invalid-attribute -->
+									<a
+										class="inline-flex w-full items-center justify-between rounded-md px-2 py-1 text-sm font-semibold transition-colors duration-150 hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
+										href=""
+									>
+										<span>Alerts</span>
+									</a>
+								</li>
+							</ul>
+							<!-- </template> -->
+						{/if}
+					</li>
+					<!-- Profile menu -->
+					<li class="relative">
+						<!-- <button
+                  class="align-middle rounded-full focus:ring-purple-200 focus:ring-[3px] focus:outline-none"
+                  x-on:click="toggleProfileMenu"
+                  x-on:keydown.escape="isProfileMenuOpen = false"
+                  x-on:click.away="isProfileMenuOpen = false"
+                  aria-label="Account"
+                  aria-haspopup="true"
+                > -->
+						<button
+							class="rounded-full align-middle focus:outline-none focus:ring-[3px] focus:ring-purple-200"
+							on:click={toggleProfileMenu}
+							aria-label="Account"
+							aria-haspopup="true"
+						>
+							<img
+								class="h-8 w-8 rounded-full object-cover"
+								src="https://images.unsplash.com/photo-1502378735452-bc7d86632805?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&s=aa3a807e1bbdfd4364d1f449eaa96d82"
+								alt=""
+								aria-hidden="true"
+							/>
+						</button>
+						{#if isProfileMenuOpen}
+							<!-- <template x-if="isProfileMenuOpen"> -->
+							<!-- <ul
+                    x-transition:leave="transition ease-in duration-150"
+                    x-transition:leave-start="opacity-100"
+                    x-transition:leave-end="opacity-0"
+                    x-on:click.away="!isProfileMenuOpen"
+                    x-on:keydown.escape="!closeProfileMenu"
+                    class="absolute right-0 w-56 p-2 mt-2 space-y-2 text-gray-600 bg-white border border-gray-100 rounded-md shadow-md dark:border-gray-700 dark:text-gray-300 dark:bg-gray-700"
+                    aria-label="submenu"
+                  > -->
+							<ul
+								class="absolute right-0 mt-2 w-56 space-y-2 rounded-md border border-gray-100 bg-white p-2 text-gray-600 shadow-md dark:border-gray-700 dark:bg-gray-700 dark:text-gray-300"
+								aria-label="submenu"
+							>
+								<li class="flex">
+									<!-- svelte-ignore a11y-invalid-attribute -->
+									<a
+										class="inline-flex w-full items-center rounded-md px-2 py-1 text-sm font-semibold transition-colors duration-150 hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
+										href=""
+									>
+										<svg
+											class="mr-3 h-4 w-4"
+											aria-hidden="true"
+											fill="none"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											stroke-width="2"
+											viewBox="0 0 24 24"
+											stroke="currentColor"
+										>
+											<path
+												d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+											/>
+										</svg>
+										<span>Profile</span>
+									</a>
+								</li>
+								<li class="flex">
+									<!-- svelte-ignore a11y-invalid-attribute -->
+									<a
+										class="inline-flex w-full items-center rounded-md px-2 py-1 text-sm font-semibold transition-colors duration-150 hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
+										href=""
+									>
+										<svg
+											class="mr-3 h-4 w-4"
+											aria-hidden="true"
+											fill="none"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											stroke-width="2"
+											viewBox="0 0 24 24"
+											stroke="currentColor"
+										>
+											<path
+												d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+											/>
+											<path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+										</svg>
+										<span>Settings</span>
+									</a>
+								</li>
+								<li class="flex">
+									<!-- svelte-ignore a11y-invalid-attribute -->
+									<a
+										class="inline-flex w-full items-center rounded-md px-2 py-1 text-sm font-semibold transition-colors duration-150 hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
+										href=""
+									>
+										<svg
+											class="mr-3 h-4 w-4"
+											aria-hidden="true"
+											fill="none"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											stroke-width="2"
+											viewBox="0 0 24 24"
+											stroke="currentColor"
+										>
+											<path
+												d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"
+											/>
+										</svg>
+										<span>Log out</span>
+									</a>
+								</li>
+							</ul>
+							<!-- </template> -->
+						{/if}
+					</li>
+				</ul>
+			</div>
+		</header>
+		<main class="h-full overflow-y-auto">
+			<div class="container mx-auto grid px-6">
+				<h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">Dashboard</h2>
+				<!-- CTA -->
+				<a
+					class="mb-8 flex items-center justify-between rounded-lg bg-purple-600 p-4 text-sm font-semibold text-purple-100 shadow-md focus:outline-none focus:ring"
+					href="https://github.com/estevanmaito/windmill-dashboard"
+				>
+					<div class="flex items-center">
+						<svg class="mr-2 h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+							<path
+								d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+							/>
+						</svg>
+						<span>Star this project on GitHub</span>
+					</div>
+					<span>View more &RightArrow;</span>
+				</a>
+				<!-- Cards -->
+				<div class="mb-8 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+					<!-- Card -->
+					<div
+						class="flex items-center rounded-lg bg-white p-4 ring-1 ring-black ring-opacity-5 dark:bg-gray-800"
+					>
+						<div
+							class="mr-4 rounded-full bg-orange-100 p-3 text-orange-500 dark:bg-orange-500 dark:text-orange-100"
+						>
+							<svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+								<path
+									d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"
+								/>
+							</svg>
+						</div>
+						<div>
+							<p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">Total clients</p>
+							<p class="text-lg font-semibold text-gray-700 dark:text-gray-200">6389</p>
+						</div>
+					</div>
+					<!-- Card -->
+					<div
+						class="flex items-center rounded-lg bg-white p-4 ring-1 ring-black ring-opacity-5 dark:bg-gray-800"
+					>
+						<div
+							class="mr-4 rounded-full bg-green-100 p-3 text-green-500 dark:bg-green-500 dark:text-green-100"
+						>
+							<svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+								<path
+									fill-rule="evenodd"
+									d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z"
+									clip-rule="evenodd"
+								/>
+							</svg>
+						</div>
+						<div>
+							<p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+								Account balance
+							</p>
+							<p class="text-lg font-semibold text-gray-700 dark:text-gray-200">$ 46,760.89</p>
+						</div>
+					</div>
+					<!-- Card -->
+					<div
+						class="flex items-center rounded-lg bg-white p-4 ring-1 ring-black ring-opacity-5 dark:bg-gray-800"
+					>
+						<div
+							class="mr-4 rounded-full bg-blue-100 p-3 text-blue-500 dark:bg-blue-500 dark:text-blue-100"
+						>
+							<svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+								<path
+									d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"
+								/>
+							</svg>
+						</div>
+						<div>
+							<p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">New sales</p>
+							<p class="text-lg font-semibold text-gray-700 dark:text-gray-200">376</p>
+						</div>
+					</div>
+					<!-- Card -->
+					<div
+						class="flex items-center rounded-lg bg-white p-4 ring-1 ring-black ring-opacity-5 dark:bg-gray-800"
+					>
+						<div
+							class="mr-4 rounded-full bg-teal-100 p-3 text-teal-500 dark:bg-teal-500 dark:text-teal-100"
+						>
+							<svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+								<path
+									fill-rule="evenodd"
+									d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zM7 8H5v2h2V8zm2 0h2v2H9V8zm6 0h-2v2h2V8z"
+									clip-rule="evenodd"
+								/>
+							</svg>
+						</div>
+						<div>
+							<p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+								Pending contacts
+							</p>
+							<p class="text-lg font-semibold text-gray-700 dark:text-gray-200">35</p>
+						</div>
+					</div>
+				</div>
+
+				<!-- New Table -->
+				<div class="w-full overflow-hidden rounded-lg ring-1 ring-black ring-opacity-5">
+					<div class="w-full overflow-x-auto">
+						<table class="w-full whitespace-nowrap">
+							<thead>
+								<tr
+									class="border-b bg-gray-50 text-left text-xs font-semibold uppercase tracking-wide text-gray-500 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400"
+								>
+									<th class="px-4 py-3">Client</th>
+									<th class="px-4 py-3">Amount</th>
+									<th class="px-4 py-3">Status</th>
+									<th class="px-4 py-3">Date</th>
+								</tr>
+							</thead>
+							<tbody class="divide-y bg-white dark:divide-gray-700 dark:bg-gray-800">
+								<tr class="text-gray-700 dark:text-gray-400">
+									<td class="px-4 py-3">
+										<div class="flex items-center text-sm">
+											<!-- Avatar with inset shadow -->
+											<div class="relative mr-3 hidden h-8 w-8 rounded-full md:block">
+												<img
+													class="h-full w-full rounded-full object-cover"
+													src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&ixid=eyJhcHBfaWQiOjE3Nzg0fQ"
+													alt=""
+													loading="lazy"
+												/>
+												<div
+													class="absolute inset-0 rounded-full shadow-inner"
+													aria-hidden="true"
+												/>
+											</div>
+											<div>
+												<p class="font-semibold">Hans Burger</p>
+												<p class="text-xs text-gray-600 dark:text-gray-400">10x Developer</p>
+											</div>
+										</div>
+									</td>
+									<td class="px-4 py-3 text-sm"> $ 863.45 </td>
+									<td class="px-4 py-3 text-xs">
+										<span
+											class="rounded-full bg-green-100 px-2 py-1 font-semibold leading-tight text-green-700 dark:bg-green-700 dark:text-green-100"
+										>
+											Approved
+										</span>
+									</td>
+									<td class="px-4 py-3 text-sm"> 6/10/2020 </td>
+								</tr>
+
+								<tr class="text-gray-700 dark:text-gray-400">
+									<td class="px-4 py-3">
+										<div class="flex items-center text-sm">
+											<!-- Avatar with inset shadow -->
+											<div class="relative mr-3 hidden h-8 w-8 rounded-full md:block">
+												<img
+													class="h-full w-full rounded-full object-cover"
+													src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&facepad=3&fit=facearea&s=707b9c33066bf8808c934c8ab394dff6"
+													alt=""
+													loading="lazy"
+												/>
+												<div
+													class="absolute inset-0 rounded-full shadow-inner"
+													aria-hidden="true"
+												/>
+											</div>
+											<div>
+												<p class="font-semibold">Jolina Angelie</p>
+												<p class="text-xs text-gray-600 dark:text-gray-400">Unemployed</p>
+											</div>
+										</div>
+									</td>
+									<td class="px-4 py-3 text-sm"> $ 369.95 </td>
+									<td class="px-4 py-3 text-xs">
+										<span
+											class="rounded-full bg-orange-100 px-2 py-1 font-semibold leading-tight text-orange-700 dark:bg-orange-600 dark:text-white"
+										>
+											Pending
+										</span>
+									</td>
+									<td class="px-4 py-3 text-sm"> 6/10/2020 </td>
+								</tr>
+
+								<tr class="text-gray-700 dark:text-gray-400">
+									<td class="px-4 py-3">
+										<div class="flex items-center text-sm">
+											<!-- Avatar with inset shadow -->
+											<div class="relative mr-3 hidden h-8 w-8 rounded-full md:block">
+												<img
+													class="h-full w-full rounded-full object-cover"
+													src="https://images.unsplash.com/photo-1551069613-1904dbdcda11?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&ixid=eyJhcHBfaWQiOjE3Nzg0fQ"
+													alt=""
+													loading="lazy"
+												/>
+												<div
+													class="absolute inset-0 rounded-full shadow-inner"
+													aria-hidden="true"
+												/>
+											</div>
+											<div>
+												<p class="font-semibold">Sarah Curry</p>
+												<p class="text-xs text-gray-600 dark:text-gray-400">Designer</p>
+											</div>
+										</div>
+									</td>
+									<td class="px-4 py-3 text-sm"> $ 86.00 </td>
+									<td class="px-4 py-3 text-xs">
+										<span
+											class="rounded-full bg-red-100 px-2 py-1 font-semibold leading-tight text-red-700 dark:bg-red-700 dark:text-red-100"
+										>
+											Denied
+										</span>
+									</td>
+									<td class="px-4 py-3 text-sm"> 6/10/2020 </td>
+								</tr>
+
+								<tr class="text-gray-700 dark:text-gray-400">
+									<td class="px-4 py-3">
+										<div class="flex items-center text-sm">
+											<!-- Avatar with inset shadow -->
+											<div class="relative mr-3 hidden h-8 w-8 rounded-full md:block">
+												<img
+													class="h-full w-full rounded-full object-cover"
+													src="https://images.unsplash.com/photo-1551006917-3b4c078c47c9?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&ixid=eyJhcHBfaWQiOjE3Nzg0fQ"
+													alt=""
+													loading="lazy"
+												/>
+												<div
+													class="absolute inset-0 rounded-full shadow-inner"
+													aria-hidden="true"
+												/>
+											</div>
+											<div>
+												<p class="font-semibold">Rulia Joberts</p>
+												<p class="text-xs text-gray-600 dark:text-gray-400">Actress</p>
+											</div>
+										</div>
+									</td>
+									<td class="px-4 py-3 text-sm"> $ 1276.45 </td>
+									<td class="px-4 py-3 text-xs">
+										<span
+											class="rounded-full bg-green-100 px-2 py-1 font-semibold leading-tight text-green-700 dark:bg-green-700 dark:text-green-100"
+										>
+											Approved
+										</span>
+									</td>
+									<td class="px-4 py-3 text-sm"> 6/10/2020 </td>
+								</tr>
+
+								<tr class="text-gray-700 dark:text-gray-400">
+									<td class="px-4 py-3">
+										<div class="flex items-center text-sm">
+											<!-- Avatar with inset shadow -->
+											<div class="relative mr-3 hidden h-8 w-8 rounded-full md:block">
+												<img
+													class="h-full w-full rounded-full object-cover"
+													src="https://images.unsplash.com/photo-1546456073-6712f79251bb?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&ixid=eyJhcHBfaWQiOjE3Nzg0fQ"
+													alt=""
+													loading="lazy"
+												/>
+												<div
+													class="absolute inset-0 rounded-full shadow-inner"
+													aria-hidden="true"
+												/>
+											</div>
+											<div>
+												<p class="font-semibold">Wenzel Dashington</p>
+												<p class="text-xs text-gray-600 dark:text-gray-400">Actor</p>
+											</div>
+										</div>
+									</td>
+									<td class="px-4 py-3 text-sm"> $ 863.45 </td>
+									<td class="px-4 py-3 text-xs">
+										<span
+											class="rounded-full bg-gray-100 px-2 py-1 font-semibold leading-tight text-gray-700 dark:bg-gray-700 dark:text-gray-100"
+										>
+											Expired
+										</span>
+									</td>
+									<td class="px-4 py-3 text-sm"> 6/10/2020 </td>
+								</tr>
+
+								<tr class="text-gray-700 dark:text-gray-400">
+									<td class="px-4 py-3">
+										<div class="flex items-center text-sm">
+											<!-- Avatar with inset shadow -->
+											<div class="relative mr-3 hidden h-8 w-8 rounded-full md:block">
+												<img
+													class="h-full w-full rounded-full object-cover"
+													src="https://images.unsplash.com/photo-1502720705749-871143f0e671?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&s=b8377ca9f985d80264279f277f3a67f5"
+													alt=""
+													loading="lazy"
+												/>
+												<div
+													class="absolute inset-0 rounded-full shadow-inner"
+													aria-hidden="true"
+												/>
+											</div>
+											<div>
+												<p class="font-semibold">Dave Li</p>
+												<p class="text-xs text-gray-600 dark:text-gray-400">Influencer</p>
+											</div>
+										</div>
+									</td>
+									<td class="px-4 py-3 text-sm"> $ 863.45 </td>
+									<td class="px-4 py-3 text-xs">
+										<span
+											class="rounded-full bg-green-100 px-2 py-1 font-semibold leading-tight text-green-700 dark:bg-green-700 dark:text-green-100"
+										>
+											Approved
+										</span>
+									</td>
+									<td class="px-4 py-3 text-sm"> 6/10/2020 </td>
+								</tr>
+
+								<tr class="text-gray-700 dark:text-gray-400">
+									<td class="px-4 py-3">
+										<div class="flex items-center text-sm">
+											<!-- Avatar with inset shadow -->
+											<div class="relative mr-3 hidden h-8 w-8 rounded-full md:block">
+												<img
+													class="h-full w-full rounded-full object-cover"
+													src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&ixid=eyJhcHBfaWQiOjE3Nzg0fQ"
+													alt=""
+													loading="lazy"
+												/>
+												<div
+													class="absolute inset-0 rounded-full shadow-inner"
+													aria-hidden="true"
+												/>
+											</div>
+											<div>
+												<p class="font-semibold">Maria Ramovic</p>
+												<p class="text-xs text-gray-600 dark:text-gray-400">Runner</p>
+											</div>
+										</div>
+									</td>
+									<td class="px-4 py-3 text-sm"> $ 863.45 </td>
+									<td class="px-4 py-3 text-xs">
+										<span
+											class="rounded-full bg-green-100 px-2 py-1 font-semibold leading-tight text-green-700 dark:bg-green-700 dark:text-green-100"
+										>
+											Approved
+										</span>
+									</td>
+									<td class="px-4 py-3 text-sm"> 6/10/2020 </td>
+								</tr>
+
+								<tr class="text-gray-700 dark:text-gray-400">
+									<td class="px-4 py-3">
+										<div class="flex items-center text-sm">
+											<!-- Avatar with inset shadow -->
+											<div class="relative mr-3 hidden h-8 w-8 rounded-full md:block">
+												<img
+													class="h-full w-full rounded-full object-cover"
+													src="https://images.unsplash.com/photo-1566411520896-01e7ca4726af?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&ixid=eyJhcHBfaWQiOjE3Nzg0fQ"
+													alt=""
+													loading="lazy"
+												/>
+												<div
+													class="absolute inset-0 rounded-full shadow-inner"
+													aria-hidden="true"
+												/>
+											</div>
+											<div>
+												<p class="font-semibold">Hitney Wouston</p>
+												<p class="text-xs text-gray-600 dark:text-gray-400">Singer</p>
+											</div>
+										</div>
+									</td>
+									<td class="px-4 py-3 text-sm"> $ 863.45 </td>
+									<td class="px-4 py-3 text-xs">
+										<span
+											class="rounded-full bg-green-100 px-2 py-1 font-semibold leading-tight text-green-700 dark:bg-green-700 dark:text-green-100"
+										>
+											Approved
+										</span>
+									</td>
+									<td class="px-4 py-3 text-sm"> 6/10/2020 </td>
+								</tr>
+
+								<tr class="text-gray-700 dark:text-gray-400">
+									<td class="px-4 py-3">
+										<div class="flex items-center text-sm">
+											<!-- Avatar with inset shadow -->
+											<div class="relative mr-3 hidden h-8 w-8 rounded-full md:block">
+												<img
+													class="h-full w-full rounded-full object-cover"
+													src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&ixid=eyJhcHBfaWQiOjE3Nzg0fQ"
+													alt=""
+													loading="lazy"
+												/>
+												<div
+													class="absolute inset-0 rounded-full shadow-inner"
+													aria-hidden="true"
+												/>
+											</div>
+											<div>
+												<p class="font-semibold">Hans Burger</p>
+												<p class="text-xs text-gray-600 dark:text-gray-400">10x Developer</p>
+											</div>
+										</div>
+									</td>
+									<td class="px-4 py-3 text-sm"> $ 863.45 </td>
+									<td class="px-4 py-3 text-xs">
+										<span
+											class="rounded-full bg-green-100 px-2 py-1 font-semibold leading-tight text-green-700 dark:bg-green-700 dark:text-green-100"
+										>
+											Approved
+										</span>
+									</td>
+									<td class="px-4 py-3 text-sm"> 6/10/2020 </td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div
+						class="grid border-t bg-gray-50 px-4 py-3 text-xs font-semibold uppercase tracking-wide text-gray-500 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 sm:grid-cols-9"
+					>
+						<span class="col-span-3 flex items-center"> Showing 21-30 of 100 </span>
+						<span class="col-span-2" />
+						<!-- Pagination -->
+						<span class="col-span-4 mt-2 flex sm:mt-auto sm:justify-end">
+							<nav aria-label="Table navigation">
+								<ul class="inline-flex items-center">
+									<li>
+										<button
+											class="rounded-md rounded-l-lg px-3 py-1 focus:outline-none focus:ring-[3px] focus:ring-purple-200"
+											aria-label="Previous"
+										>
+											<svg aria-hidden="true" class="h-4 w-4 fill-current" viewBox="0 0 20 20">
+												<path
+													d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+													clip-rule="evenodd"
+													fill-rule="evenodd"
+												/>
+											</svg>
+										</button>
+									</li>
+									<li>
+										<button
+											class="rounded-md px-3 py-1 focus:outline-none focus:ring-[3px] focus:ring-purple-200"
+										>
+											1
+										</button>
+									</li>
+									<li>
+										<button
+											class="rounded-md px-3 py-1 focus:outline-none focus:ring-[3px] focus:ring-purple-200"
+										>
+											2
+										</button>
+									</li>
+									<li>
+										<button
+											class="rounded-md border border-r-0 border-purple-600 bg-purple-600 px-3 py-1 text-white transition-colors duration-150 focus:outline-none focus:ring-[3px] focus:ring-purple-200"
+										>
+											3
+										</button>
+									</li>
+									<li>
+										<button
+											class="rounded-md px-3 py-1 focus:outline-none focus:ring-[3px] focus:ring-purple-200"
+										>
+											4
+										</button>
+									</li>
+									<li>
+										<span class="px-3 py-1">...</span>
+									</li>
+									<li>
+										<button
+											class="rounded-md px-3 py-1 focus:outline-none focus:ring-[3px] focus:ring-purple-200"
+										>
+											8
+										</button>
+									</li>
+									<li>
+										<button
+											class="rounded-md px-3 py-1 focus:outline-none focus:ring-[3px] focus:ring-purple-200"
+										>
+											9
+										</button>
+									</li>
+									<li>
+										<button
+											class="rounded-md rounded-r-lg px-3 py-1 focus:outline-none focus:ring-[3px] focus:ring-purple-200"
+											aria-label="Next"
+										>
+											<svg class="h-4 w-4 fill-current" aria-hidden="true" viewBox="0 0 20 20">
+												<path
+													d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+													clip-rule="evenodd"
+													fill-rule="evenodd"
+												/>
+											</svg>
+										</button>
+									</li>
+								</ul>
+							</nav>
+						</span>
+					</div>
+				</div>
+
+				<!-- Charts -->
+				<h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">Charts</h2>
+				<div class="mb-8 grid gap-6 md:grid-cols-2">
+					<div
+						class="min-w-0 rounded-lg bg-white p-4 ring-1 ring-black ring-opacity-5 dark:bg-gray-800"
+					>
+						<h4 class="mb-4 font-semibold text-gray-800 dark:text-gray-300">Revenue</h4>
+						<canvas id="pie" />
+						<div
+							class="mt-4 flex justify-center space-x-3 text-sm text-gray-600 dark:text-gray-400"
+						>
+							<!-- Chart legend -->
+							<div class="flex items-center">
+								<span class="mr-1 inline-block h-3 w-3 rounded-full bg-blue-500" />
+								<span>Shirts</span>
+							</div>
+							<div class="flex items-center">
+								<span class="mr-1 inline-block h-3 w-3 rounded-full bg-teal-600" />
+								<span>Shoes</span>
+							</div>
+							<div class="flex items-center">
+								<span class="mr-1 inline-block h-3 w-3 rounded-full bg-purple-600" />
+								<span>Bags</span>
+							</div>
+						</div>
+					</div>
+					<div
+						class="min-w-0 rounded-lg bg-white p-4 ring-1 ring-black ring-opacity-5 dark:bg-gray-800"
+					>
+						<h4 class="mb-4 font-semibold text-gray-800 dark:text-gray-300">Traffic</h4>
+						<canvas id="line" />
+						<div
+							class="mt-4 flex justify-center space-x-3 text-sm text-gray-600 dark:text-gray-400"
+						>
+							<!-- Chart legend -->
+							<div class="flex items-center">
+								<span class="mr-1 inline-block h-3 w-3 rounded-full bg-teal-600" />
+								<span>Organic</span>
+							</div>
+							<div class="flex items-center">
+								<span class="mr-1 inline-block h-3 w-3 rounded-full bg-purple-600" />
+								<span>Paid</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+	</div>
+</div>
