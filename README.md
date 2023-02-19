@@ -16,6 +16,10 @@ then
 npm run dev
 ```
 
+## Quick shot
+
+![My image](https://raw.githubusercontent.com/sonyarianto/airmill-dashboard/main/airmill_dashboard-0.1.0.png?9832732)
+
 ## Difference with Windmill Dashboard
 
 - Windmill Dashboard available in HTML (+Tailwind CSS and Alpine.js) and React, we only provide SvelteKit version.
