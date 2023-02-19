@@ -1,9 +1,7 @@
 <script lang="ts">
 	import { onMount, onDestroy } from 'svelte';
-	import { fade, fly } from 'svelte/transition';
 	import { lineChartConfig, pieChartConfig } from '../chart_config.js';
-	import { clickoutside } from '@svelte-put/clickoutside';
-	import { Chart } from 'chart.js/auto'; // uncomment this line to use chart.js instead of chart.js UMD CDN
+	import { Chart } from 'chart.js/auto'; // you can also use chart.js UMD CDN (I comment out on head side below)
 	import DesktopSideMenu from '../components/DesktopSideMenu.svelte';
 	import MobileSideMenu from '../components/MobileSideMenu.svelte';
 	import HeaderMenu from '../components/HeaderMenu.svelte';
