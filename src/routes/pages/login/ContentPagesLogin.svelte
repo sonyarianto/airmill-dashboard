@@ -41,12 +41,7 @@
 					</label>
 
 					<!-- You should use a button here, as the anchor is only used for the example  -->
-					<!-- <a
-						class="mt-4 block w-full rounded-lg border border-transparent bg-purple-600 px-4 py-2 text-center text-sm font-medium leading-5 text-white transition-colors duration-150 hover:bg-purple-700 focus:outline-none focus:ring-[3px] focus:ring-purple-200 active:bg-purple-600"
-						href="/"
-					>
-						Log in
-					</a> -->
+
 					<button
 						on:click={() => (location.href = '/')}
 						class="mt-4 block w-full rounded-lg border border-transparent bg-purple-600 px-4 py-2 text-center text-sm font-medium leading-5 text-white transition-colors duration-150 hover:bg-purple-700 focus:outline-none focus:ring-[3px] focus:ring-purple-200 active:bg-purple-600"
