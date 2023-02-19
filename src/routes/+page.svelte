@@ -1,7 +1,9 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { onMount, onDestroy } from 'svelte';
+	import { fade } from 'svelte/transition';
 	import { lineChartConfig } from '../codes/line_chart_config.js';
 	import { pieChartConfig } from '../codes/pie_chart_config.js';
+	import { clickoutside } from '@svelte-put/clickoutside';
 
 	let isSideMenuOpen = false;
 	let isPagesMenuOpen = false;
@@ -13,10 +15,6 @@
 
 	function toggleProfileMenu() {
 		isProfileMenuOpen = !isProfileMenuOpen;
-	}
-
-	function toggleNotificationsMenu() {
-		isNotificationsMenuOpen = !isNotificationsMenuOpen;
 	}
 
 	function toggleTheme() {
@@ -35,12 +33,26 @@
 		isPagesMenuOpen = !isPagesMenuOpen;
 	}
 
+	function handleKeyDown(event) {
+		if (event.key === 'Escape') {
+			isNotificationsMenuOpen = false;
+		}
+	}
+
 	onMount(() => {
 		const pieChartContext = document.getElementById('pie');
 		pieChart = new Chart(pieChartContext, pieChartConfig);
 
 		const lineChartContext = document.getElementById('line');
 		lineChart = new Chart(lineChartContext, lineChartConfig);
+
+		window.addEventListener('keydown', handleKeyDown);
+	});
+
+	onDestroy(() => {
+		if (import.meta.env.SSR === false) {
+			window.removeEventListener('keydown', handleKeyDown);
+		}
 	});
 </script>
 
@@ -660,17 +672,16 @@
 					</li>
 					<!-- Notifications menu -->
 					<li class="relative">
-						<!-- <button
-                  class="relative align-middle rounded-md focus:outline-none focus:ring-purple"
-                  x-on:click="toggleNotificationsMenu"
-                  x-on:click.away="isNotificationsMenuOpen = false"
-                  x-on:keydown.escape="isNotificationsMenuOpen = false"
-                  aria-label="Notifications"
-                  aria-haspopup="true"
-                > -->
 						<button
+							use:clickoutside
+							on:clickoutside={() => {
+								if (isNotificationsMenuOpen) isNotificationsMenuOpen = false;
+							}}
 							class="relative rounded-md align-middle focus:outline-none focus:ring-[3px] focus:ring-purple-200"
-							on:click={toggleNotificationsMenu}
+							on:click={() => {
+								isNotificationsMenuOpen = !isNotificationsMenuOpen;
+								console.log({ isNotificationsMenuOpen });
+							}}
 							aria-label="Notifications"
 							aria-haspopup="true"
 						>
@@ -686,16 +697,8 @@
 							/>
 						</button>
 						{#if isNotificationsMenuOpen}
-							<!-- <template x-if="isNotificationsMenuOpen"> -->
-							<!-- <ul
-                    x-transition:leave="transition ease-in duration-150"
-                    x-transition:leave-start="opacity-100"
-                    x-transition:leave-end="opacity-0"
-                    x-on:click.away="!isNotificationsMenuOpen"
-                    x-on:keydown.escape="!isNotificationsMenuOpen"
-                    class="absolute right-0 w-56 p-2 mt-2 space-y-2 text-gray-600 bg-white border border-gray-100 rounded-md shadow-md dark:text-gray-300 dark:border-gray-700 dark:bg-gray-700"
-                  > -->
 							<ul
+								transition:fade={{ duration: 150 }}
 								class="absolute right-0 mt-2 w-56 space-y-2 rounded-md border border-gray-100 bg-white p-2 text-gray-600 shadow-md dark:border-gray-700 dark:bg-gray-700 dark:text-gray-300"
 							>
 								<li class="flex">
