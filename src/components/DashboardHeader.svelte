@@ -2,15 +2,15 @@
 	import { fade } from 'svelte/transition';
 	import { clickoutside } from '@svelte-put/clickoutside';
 
-	interface HeaderProps {
-		isSideMenuOpen: boolean;
+	interface DashboardHeaderProps {
 		toggleTheme: () => void;
 		isDarkTheme: boolean;
 		isNotificationsMenuOpen: boolean;
 		isProfileMenuOpen: boolean;
 	}
 
-	export let props: HeaderProps;
+	export let props: DashboardHeaderProps;
+	export let isSideMenuOpen: boolean;
 </script>
 
 <header
@@ -23,7 +23,7 @@
 		<button
 			type="button"
 			class="mr-5 -ml-1 rounded-md p-1 focus:outline-none focus:ring-[3px] focus:ring-purple-200 dark:focus:ring-gray-500 md:hidden"
-			on:click={() => (props.isSideMenuOpen = !props.isSideMenuOpen)}
+			on:click={() => (isSideMenuOpen = !isSideMenuOpen)}
 			aria-label="Menu"
 		>
 			<svg class="h-6 w-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">

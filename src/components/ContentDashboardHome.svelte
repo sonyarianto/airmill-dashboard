@@ -1,3 +1,28 @@
+<script lang="ts">
+	import { onMount } from 'svelte';
+	import { lineChartConfig, pieChartConfig } from '../chart_config';
+	import { Chart } from 'chart.js/auto';
+
+	onMount(() => {
+		const pieChartContext = document.getElementById('pie');
+		new Chart(pieChartContext as any, pieChartConfig as any);
+
+		const lineChartContext = document.getElementById('line');
+		new Chart(lineChartContext as any, lineChartConfig as any);
+	});
+</script>
+
+<svelte:head>
+	<title>Home</title>
+	<!-- <script
+		defer
+		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.2.1/chart.umd.min.js"
+		integrity="sha512-GCiwmzA0bNGVsp1otzTJ4LWQT2jjGJENLGyLlerlzckNI30moi2EQT0AfRI7fLYYYDKR+7hnuh35r3y1uJzugw=="
+		crossorigin="anonymous"
+		referrerpolicy="no-referrer"
+	></script> -->
+</svelte:head>
+
 <main class="h-full overflow-y-auto">
 	<div class="container mx-auto grid px-6">
 		<h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">Dashboard</h2>
