@@ -46,11 +46,13 @@
 
 <svelte:head>
 	<title>Home</title>
-	<link
-		rel="stylesheet"
-		href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css"
-	/>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" defer></script>
+	<script
+		defer
+		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.2.1/chart.umd.min.js"
+		integrity="sha512-GCiwmzA0bNGVsp1otzTJ4LWQT2jjGJENLGyLlerlzckNI30moi2EQT0AfRI7fLYYYDKR+7hnuh35r3y1uJzugw=="
+		crossorigin="anonymous"
+		referrerpolicy="no-referrer"
+	></script>
 </svelte:head>
 
 <div class="flex h-screen bg-gray-50 dark:bg-gray-900" class:overflow-hidden={!isSideMenuOpen}>
