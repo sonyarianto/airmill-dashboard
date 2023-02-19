@@ -1,17 +1,15 @@
 <script lang="ts">
 	import { onMount, onDestroy } from 'svelte';
 	import { fade } from 'svelte/transition';
-	import { lineChartConfig } from '../codes/line_chart_config.js';
-	import { pieChartConfig } from '../codes/pie_chart_config.js';
+	import { lineChartConfig, pieChartConfig } from '../codes/chart_config.js';
 	import { clickoutside } from '@svelte-put/clickoutside';
+	import { Chart } from 'chart.js/auto'; // uncomment this line to use chart.js instead of chart.js UMD CDN
 
 	let isSideMenuOpen = false;
 	let isPagesMenuOpen = false;
 	let dark = false;
 	let isNotificationsMenuOpen = false;
 	let isProfileMenuOpen = false;
-	let pieChart;
-	let lineChart;
 
 	function toggleProfileMenu() {
 		isProfileMenuOpen = !isProfileMenuOpen;
@@ -33,7 +31,7 @@
 		isPagesMenuOpen = !isPagesMenuOpen;
 	}
 
-	function handleKeyDown(event) {
+	function handleKeyDown(event: KeyboardEvent) {
 		if (event.key === 'Escape') {
 			isNotificationsMenuOpen = false;
 			isProfileMenuOpen = false;
@@ -42,10 +40,10 @@
 
 	onMount(() => {
 		const pieChartContext = document.getElementById('pie');
-		pieChart = new Chart(pieChartContext, pieChartConfig);
+		new Chart(pieChartContext as any, pieChartConfig as any);
 
 		const lineChartContext = document.getElementById('line');
-		lineChart = new Chart(lineChartContext, lineChartConfig);
+		new Chart(lineChartContext as any, lineChartConfig as any);
 
 		window.addEventListener('keydown', handleKeyDown);
 	});
@@ -59,13 +57,13 @@
 
 <svelte:head>
 	<title>Home</title>
-	<script
+	<!-- <script
 		defer
 		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.2.1/chart.umd.min.js"
 		integrity="sha512-GCiwmzA0bNGVsp1otzTJ4LWQT2jjGJENLGyLlerlzckNI30moi2EQT0AfRI7fLYYYDKR+7hnuh35r3y1uJzugw=="
 		crossorigin="anonymous"
 		referrerpolicy="no-referrer"
-	></script>
+	></script> -->
 </svelte:head>
 
 <div class="flex h-screen bg-gray-50 dark:bg-gray-900" class:overflow-hidden={!isSideMenuOpen}>

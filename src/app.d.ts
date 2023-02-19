@@ -9,4 +9,8 @@ declare global {
 	}
 }
 
+// declare global {
+// 	let Chart: any;
+// }
+
 export {};
