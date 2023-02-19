@@ -7,7 +7,7 @@
 		<h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">Tables</h2>
 		<!-- CTA -->
 		<a
-			class="focus:shadow-outline-purple mb-8 flex items-center justify-between rounded-lg bg-purple-600 p-4 text-sm font-semibold text-purple-100 shadow-md focus:outline-none"
+			class="mb-8 flex items-center justify-between rounded-lg bg-purple-600 p-4 text-sm font-semibold text-purple-100 shadow-md focus:outline-none focus:ring-[3px] focus:ring-purple-200"
 			href="https://github.com/sonyarianto/airmill-dashboard"
 			target="_blank"
 			rel="noreferrer"
