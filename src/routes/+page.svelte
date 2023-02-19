@@ -7,16 +7,13 @@
 
 	let isSideMenuOpen = false;
 	let isPagesMenuOpen = false;
-	let dark = false;
 	let isNotificationsMenuOpen = false;
 	let isProfileMenuOpen = false;
-
-	function toggleProfileMenu() {
-		isProfileMenuOpen = !isProfileMenuOpen;
-	}
+	let isDarkTheme = false;
 
 	function toggleTheme() {
-		dark = !dark;
+		isDarkTheme = !isDarkTheme;
+		document.documentElement.classList.toggle('dark');
 	}
 
 	function toggleSideMenu() {
@@ -649,15 +646,12 @@
 							on:click={toggleTheme}
 							aria-label="Toggle color mode"
 						>
-							{#if !dark}
-								<!-- <template x-if="!dark"> -->
+							{#if isDarkTheme}
 								<svg class="h-5 w-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
 									<path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
 								</svg>
-								<!-- </template> -->
 							{/if}
-							{#if dark}
-								<!-- <template x-if="dark"> -->
+							{#if !isDarkTheme}
 								<svg class="h-5 w-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
 									<path
 										fill-rule="evenodd"
@@ -665,7 +659,6 @@
 										clip-rule="evenodd"
 									/>
 								</svg>
-								<!-- </template> -->
 							{/if}
 						</button>
 					</li>
