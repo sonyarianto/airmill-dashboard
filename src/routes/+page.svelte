@@ -38,7 +38,7 @@
 	onMount(() => {
 		const pieChartContext = document.getElementById('pie');
 		pieChart = new Chart(pieChartContext, pieChartConfig);
-		
+
 		const lineChartContext = document.getElementById('line');
 		lineChart = new Chart(lineChartContext, lineChartConfig);
 	});
