@@ -8,6 +8,7 @@
 	export let props: MobileSideMenuProps;
 </script>
 
+<!-- Backdrop -->
 <div
 	class="fixed inset-0 z-10 flex items-end bg-black bg-opacity-50 sm:items-center sm:justify-center"
 />

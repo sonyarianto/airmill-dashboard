@@ -1,16 +1,16 @@
 <script lang="ts">
-    import { fade } from 'svelte/transition';
-    import { clickoutside } from '@svelte-put/clickoutside';
+	import { fade } from 'svelte/transition';
+	import { clickoutside } from '@svelte-put/clickoutside';
 
-    interface HeaderProps {
-        isSideMenuOpen: boolean;
-        toggleTheme: () => void;
-        isDarkTheme: boolean;
-        isNotificationsMenuOpen: boolean;
-        isProfileMenuOpen: boolean;
-    }
+	interface HeaderProps {
+		isSideMenuOpen: boolean;
+		toggleTheme: () => void;
+		isDarkTheme: boolean;
+		isNotificationsMenuOpen: boolean;
+		isProfileMenuOpen: boolean;
+	}
 
-    export let props: HeaderProps;
+	export let props: HeaderProps;
 </script>
 
 <header
