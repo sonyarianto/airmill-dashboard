@@ -80,7 +80,7 @@
 					<p class="mt-4">
 						<a
 							class="text-sm font-medium text-purple-600 hover:underline dark:text-purple-400"
-							href="./forgot-password.html"
+							href="/pages/forgot-password"
 						>
 							Forgot your password?
 						</a>

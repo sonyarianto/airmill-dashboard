@@ -58,7 +58,7 @@
 							/>
 							<span class="ml-2">
 								I agree to the
-								<span class="underline cursor-pointer">privacy policy</span>
+								<span class="cursor-pointer underline">privacy policy</span>
 							</span>
 						</label>
 					</div>
