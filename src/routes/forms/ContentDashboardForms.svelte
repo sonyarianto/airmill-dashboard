@@ -29,7 +29,7 @@
 			<label class="block text-sm">
 				<span class="text-gray-700 dark:text-gray-400">Name</span>
 				<input
-					class="focus:shadow-outline-purple dark:focus:shadow-outline-gray form-input mt-1 block w-full text-sm focus:border-purple-400 focus:outline-none dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300"
+					class="form-input mt-1 block w-full rounded-md text-sm focus:border-purple-400 focus:outline-none focus:ring-[3px] focus:ring-purple-200 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 dark:focus:ring-gray-500"
 					placeholder="Jane Doe"
 				/>
 			</label>
@@ -40,7 +40,7 @@
 					<label class="inline-flex items-center text-gray-600 dark:text-gray-400">
 						<input
 							type="radio"
-							class="focus:shadow-outline-purple dark:focus:shadow-outline-gray form-radio text-purple-600 focus:border-purple-400 focus:outline-none"
+							class="form-radio text-purple-600 focus:border-purple-400 focus:outline-none focus:ring-[3px] focus:ring-purple-200 dark:focus:ring-gray-500"
 							name="accountType"
 							value="personal"
 						/>
@@ -49,7 +49,7 @@
 					<label class="ml-6 inline-flex items-center text-gray-600 dark:text-gray-400">
 						<input
 							type="radio"
-							class="focus:shadow-outline-purple dark:focus:shadow-outline-gray form-radio text-purple-600 focus:border-purple-400 focus:outline-none"
+							class="form-radio text-purple-600 focus:border-purple-400 focus:outline-none focus:ring-[3px] focus:ring-purple-200 dark:focus:ring-gray-500"
 							name="accountType"
 							value="busines"
 						/>
@@ -61,7 +61,7 @@
 			<label class="mt-4 block text-sm">
 				<span class="text-gray-700 dark:text-gray-400"> Requested Limit </span>
 				<select
-					class="focus:shadow-outline-purple dark:focus:shadow-outline-gray form-select mt-1 block w-full text-sm focus:border-purple-400 focus:outline-none dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300"
+					class="form-select mt-1 block w-full rounded-md text-sm focus:border-purple-400 focus:outline-none focus:ring-[3px] focus:ring-purple-200 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 dark:focus:ring-gray-500"
 				>
 					<option>$1,000</option>
 					<option>$5,000</option>
@@ -73,7 +73,7 @@
 			<label class="mt-4 block text-sm">
 				<span class="text-gray-700 dark:text-gray-400"> Multiselect </span>
 				<select
-					class="focus:shadow-outline-purple dark:focus:shadow-outline-gray form-multiselect mt-1 block w-full text-sm focus:border-purple-400 focus:outline-none dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300"
+					class="form-multiselect mt-1 block w-full rounded-md text-sm focus:border-purple-400 focus:outline-none focus:ring-[3px] focus:ring-purple-200 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 dark:focus:ring-gray-500"
 					multiple
 				>
 					<option>Option 1</option>
@@ -87,7 +87,7 @@
 			<label class="mt-4 block text-sm">
 				<span class="text-gray-700 dark:text-gray-400">Message</span>
 				<textarea
-					class="focus:shadow-outline-purple dark:focus:shadow-outline-gray form-textarea mt-1 block w-full text-sm focus:border-purple-400 focus:outline-none dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300"
+					class="form-textarea mt-1 block w-full rounded-md text-sm focus:border-purple-400 focus:outline-none focus:ring-[3px] focus:ring-purple-200 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 dark:focus:ring-gray-500"
 					rows="3"
 					placeholder="Enter some long form content."
 				/>
@@ -97,11 +97,11 @@
 				<label class="flex items-center dark:text-gray-400">
 					<input
 						type="checkbox"
-						class="focus:shadow-outline-purple dark:focus:shadow-outline-gray form-checkbox text-purple-600 focus:border-purple-400 focus:outline-none"
+						class="form-checkbox text-purple-600 focus:border-purple-400 focus:outline-none focus:ring-[3px] focus:ring-purple-200 dark:focus:ring-gray-500"
 					/>
 					<span class="ml-2">
 						I agree to the
-						<span class="underline">privacy policy</span>
+						<span class="cursor-pointer underline">privacy policy</span>
 					</span>
 				</label>
 			</div>
@@ -114,8 +114,9 @@
 			<label class="block text-sm">
 				<span class="text-gray-700 dark:text-gray-400"> Invalid input </span>
 				<input
-					class="focus:shadow-outline-red form-input mt-1 block w-full border-red-600 text-sm focus:border-red-400 focus:outline-none dark:bg-gray-700 dark:text-gray-300"
-					placeholder="Jane Doe"
+					class="form-input mt-1 block w-full rounded-md border-red-600 text-sm focus:border-red-400 focus:outline-none focus:ring-[3px] focus:ring-red-200 dark:bg-gray-700 dark:text-gray-300"
+					placeholder=""
+					type="password"
 				/>
 				<span class="text-xs text-red-600 dark:text-red-400"> Your password is too short. </span>
 			</label>
@@ -124,8 +125,9 @@
 			<label class="mt-4 block text-sm">
 				<span class="text-gray-700 dark:text-gray-400"> Valid input </span>
 				<input
-					class="focus:shadow-outline-green form-input mt-1 block w-full border-green-600 text-sm focus:border-green-400 focus:outline-none dark:bg-gray-700 dark:text-gray-300"
-					placeholder="Jane Doe"
+					class="form-input mt-1 block w-full rounded-md border-green-600 text-sm focus:border-green-400 focus:outline-none focus:ring-[3px] focus:ring-green-200 dark:bg-gray-700 dark:text-gray-300"
+					placeholder=""
+					type="password"
 				/>
 				<span class="text-xs text-green-600 dark:text-green-400"> Your password is strong. </span>
 			</label>
@@ -134,8 +136,9 @@
 			<label class="mt-4 block text-sm">
 				<span class="text-gray-700 dark:text-gray-400"> Helper text </span>
 				<input
-					class="focus:shadow-outline-purple dark:focus:shadow-outline-gray form-input mt-1 block w-full text-sm focus:border-purple-400 focus:outline-none dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300"
-					placeholder="Jane Doe"
+					class="form-input mt-1 block w-full rounded-md text-sm focus:border-purple-400 focus:outline-none focus:ring-[3px] focus:ring-purple-200 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 dark:focus:ring-gray-500"
+					placeholder=""
+					type="password"
 				/>
 				<span class="text-xs text-gray-600 dark:text-gray-400">
 					Your password must be at least 6 characters long.
@@ -153,8 +156,8 @@
 					class="relative text-gray-500 focus-within:text-purple-600 dark:focus-within:text-purple-400"
 				>
 					<input
-						class="focus:shadow-outline-purple dark:focus:shadow-outline-gray form-input mt-1 block w-full pl-10 text-sm text-black focus:border-purple-400 focus:outline-none dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300"
-						placeholder="Jane Doe"
+						class="form-input mt-1 block w-full rounded-md pl-10 text-sm text-black focus:border-purple-400 focus:outline-none focus:ring-[3px] focus:ring-purple-200 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 dark:focus:ring-gray-500"
+						placeholder="email@address.com"
 					/>
 					<div class="pointer-events-none absolute inset-y-0 ml-3 flex items-center">
 						<svg
@@ -182,8 +185,8 @@
 					class="relative text-gray-500 focus-within:text-purple-600 dark:focus-within:text-purple-400"
 				>
 					<input
-						class="focus:shadow-outline-purple dark:focus:shadow-outline-gray form-input mt-1 block w-full pr-10 text-sm text-black focus:border-purple-400 focus:outline-none dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300"
-						placeholder="Jane Doe"
+						class="form-input mt-1 block w-full rounded-md pr-10 text-sm text-black focus:border-purple-400 focus:outline-none focus:ring-[3px] focus:ring-purple-200 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 dark:focus:ring-gray-500"
+						placeholder="address@email.com"
 					/>
 					<div class="pointer-events-none absolute inset-y-0 right-0 mr-3 flex items-center">
 						<svg
@@ -212,11 +215,11 @@
 				<span class="text-gray-700 dark:text-gray-400"> Button left </span>
 				<div class="relative">
 					<input
-						class="focus:shadow-outline-purple dark:focus:shadow-outline-gray form-input mt-1 block w-full pl-20 text-sm focus:border-purple-400 focus:outline-none dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300"
+						class="form-input mt-1 block w-full rounded-md pl-20 text-sm focus:border-purple-400 focus:outline-none focus:ring-[3px] focus:ring-purple-200 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 dark:focus:ring-gray-500"
 						placeholder="Jane Doe"
 					/>
 					<button
-						class="focus:shadow-outline-purple dark:focus:shadow-outline-gray absolute inset-y-0 rounded-l-md border border-transparent bg-purple-600 px-4 text-sm font-medium leading-5 text-white transition-colors duration-150 hover:bg-purple-700 focus:outline-none active:bg-purple-600"
+						class="absolute inset-y-0 rounded-l-md border border-transparent bg-purple-600 px-4 text-sm font-medium leading-5 text-white transition-colors duration-150 hover:bg-purple-700 focus:outline-none focus:ring-purple-200 active:bg-purple-600 dark:focus:ring-gray-500"
 					>
 						Click
 					</button>
@@ -227,11 +230,11 @@
 				<span class="text-gray-700 dark:text-gray-400"> Button right </span>
 				<div class="relative text-gray-500 focus-within:text-purple-600">
 					<input
-						class="focus:shadow-outline-purple dark:focus:shadow-outline-gray form-input mt-1 block w-full pr-20 text-sm text-black focus:border-purple-400 focus:outline-none dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300"
+						class="form-input mt-1 block w-full rounded-md pr-20 text-sm text-black focus:border-purple-400 focus:outline-none focus:ring-[3px] focus:ring-purple-200 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 dark:focus:ring-gray-500"
 						placeholder="Jane Doe"
 					/>
 					<button
-						class="focus:shadow-outline-purple absolute inset-y-0 right-0 rounded-r-md border border-transparent bg-purple-600 px-4 text-sm font-medium leading-5 text-white transition-colors duration-150 hover:bg-purple-700 focus:outline-none active:bg-purple-600"
+						class="absolute inset-y-0 right-0 rounded-r-md border border-transparent bg-purple-600 px-4 text-sm font-medium leading-5 text-white transition-colors duration-150 hover:bg-purple-700 focus:outline-none focus:ring-purple-200 active:bg-purple-600 dark:focus:ring-gray-500"
 					>
 						Click
 					</button>
