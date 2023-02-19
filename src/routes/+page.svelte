@@ -1368,42 +1368,12 @@
 					>
 						<h4 class="mb-4 font-semibold text-gray-800 dark:text-gray-300">Revenue</h4>
 						<canvas id="pie" />
-						<div
-							class="mt-4 flex justify-center space-x-3 text-sm text-gray-600 dark:text-gray-400"
-						>
-							<!-- Chart legend -->
-							<div class="flex items-center">
-								<span class="mr-1 inline-block h-3 w-3 rounded-full bg-blue-500" />
-								<span>Shirts</span>
-							</div>
-							<div class="flex items-center">
-								<span class="mr-1 inline-block h-3 w-3 rounded-full bg-teal-600" />
-								<span>Shoes</span>
-							</div>
-							<div class="flex items-center">
-								<span class="mr-1 inline-block h-3 w-3 rounded-full bg-purple-600" />
-								<span>Bags</span>
-							</div>
-						</div>
 					</div>
 					<div
 						class="min-w-0 rounded-lg bg-white p-4 ring-1 ring-black ring-opacity-5 dark:bg-gray-800"
 					>
 						<h4 class="mb-4 font-semibold text-gray-800 dark:text-gray-300">Traffic</h4>
 						<canvas id="line" />
-						<div
-							class="mt-4 flex justify-center space-x-3 text-sm text-gray-600 dark:text-gray-400"
-						>
-							<!-- Chart legend -->
-							<div class="flex items-center">
-								<span class="mr-1 inline-block h-3 w-3 rounded-full bg-teal-600" />
-								<span>Organic</span>
-							</div>
-							<div class="flex items-center">
-								<span class="mr-1 inline-block h-3 w-3 rounded-full bg-purple-600" />
-								<span>Paid</span>
-							</div>
-						</div>
 					</div>
 				</div>
 			</div>

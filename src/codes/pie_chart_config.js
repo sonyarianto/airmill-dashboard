@@ -12,9 +12,14 @@ export const pieChartConfig = {
 	},
 	options: {
 		responsive: true,
-		cutoutPercentage: 80,
-		legend: {
-			display: false
-		}
+		plugins: {
+			legend: {
+				position: 'bottom',
+				labels: {
+					usePointStyle: true
+				}
+			}
+		},
+		cutout: 80
 	}
 };
