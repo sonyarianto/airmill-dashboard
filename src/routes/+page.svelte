@@ -20,10 +20,6 @@
 		isSideMenuOpen = !isSideMenuOpen;
 	}
 
-	function closeSideMenu() {
-		isSideMenuOpen = false;
-	}
-
 	function togglePagesMenu() {
 		isPagesMenuOpen = !isPagesMenuOpen;
 	}
@@ -54,6 +50,7 @@
 
 <svelte:head>
 	<title>Home</title>
+	<!-- uncomment below if you want to use the UMD CDN version -->
 	<!-- <script
 		defer
 		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.2.1/chart.umd.min.js"
@@ -631,7 +628,7 @@
 							</svg>
 						</div>
 						<input
-							class="dark:focus:ring-gray form-input w-full rounded-md border-0 bg-gray-100 pl-8 pr-2 text-sm text-gray-700 placeholder-gray-600 focus:border-purple-300 focus:bg-white focus:placeholder-gray-500 focus:outline-none focus:ring-[3px] focus:ring-purple-200 dark:bg-gray-700 dark:text-gray-200 dark:placeholder-gray-500 dark:focus:placeholder-gray-600"
+							class="form-input w-full rounded-md border-0 bg-gray-100 pl-8 pr-2 text-sm text-gray-700 placeholder-gray-600 focus:border-purple-300 focus:bg-white focus:placeholder-gray-500 focus:outline-none focus:ring-[3px] focus:ring-purple-200 dark:bg-gray-700 dark:text-gray-200 dark:placeholder-gray-500 dark:focus:placeholder-gray-600 dark:focus:ring-gray-500"
 							type="text"
 							placeholder="Search..."
 							aria-label="Search..."
@@ -642,7 +639,7 @@
 					<!-- Theme toggler -->
 					<li class="flex">
 						<button
-							class="rounded-md focus:outline-none focus:ring-[3px] focus:ring-purple-200"
+							class="rounded-md focus:outline-none focus:ring-[3px] focus:ring-purple-200 dark:focus:ring-gray-500"
 							on:click={toggleTheme}
 							aria-label="Toggle color mode"
 						>
@@ -669,7 +666,7 @@
 							on:clickoutside={() => {
 								if (isNotificationsMenuOpen) isNotificationsMenuOpen = false;
 							}}
-							class="relative rounded-md align-middle focus:outline-none focus:ring-[3px] focus:ring-purple-200"
+							class="relative rounded-md align-middle focus:outline-none focus:ring-[3px] focus:ring-purple-200 dark:focus:ring-gray-500"
 							on:click={() => {
 								isNotificationsMenuOpen = !isNotificationsMenuOpen;
 							}}
@@ -739,7 +736,7 @@
 							on:clickoutside={() => {
 								if (isProfileMenuOpen) isProfileMenuOpen = false;
 							}}
-							class="rounded-full align-middle focus:outline-none focus:ring-[3px] focus:ring-purple-200"
+							class="rounded-full align-middle focus:outline-none focus:ring-[3px] focus:ring-purple-200 dark:focus:ring-gray-500"
 							on:click={() => {
 								isProfileMenuOpen = !isProfileMenuOpen;
 							}}
