@@ -104,7 +104,7 @@
 					/>
 					<a
 						class="inline-flex w-full items-center text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800 dark:text-gray-100 dark:hover:text-gray-200"
-						href="index.html"
+						href="/"
 					>
 						<svg
 							class="h-5 w-5"
@@ -363,7 +363,7 @@
 						/>
 						<a
 							class="inline-flex w-full items-center text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800 dark:text-gray-100 dark:hover:text-gray-200"
-							href="index.html"
+							href="/"
 						>
 							<svg
 								class="h-5 w-5"
