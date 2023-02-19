@@ -36,6 +36,7 @@
 	function handleKeyDown(event) {
 		if (event.key === 'Escape') {
 			isNotificationsMenuOpen = false;
+			isProfileMenuOpen = false;
 		}
 	}
 
@@ -680,7 +681,6 @@
 							class="relative rounded-md align-middle focus:outline-none focus:ring-[3px] focus:ring-purple-200"
 							on:click={() => {
 								isNotificationsMenuOpen = !isNotificationsMenuOpen;
-								console.log({ isNotificationsMenuOpen });
 							}}
 							aria-label="Notifications"
 							aria-haspopup="true"
@@ -739,22 +739,19 @@
 									</a>
 								</li>
 							</ul>
-							<!-- </template> -->
 						{/if}
 					</li>
 					<!-- Profile menu -->
 					<li class="relative">
-						<!-- <button
-                  class="align-middle rounded-full focus:ring-purple-200 focus:ring-[3px] focus:outline-none"
-                  x-on:click="toggleProfileMenu"
-                  x-on:keydown.escape="isProfileMenuOpen = false"
-                  x-on:click.away="isProfileMenuOpen = false"
-                  aria-label="Account"
-                  aria-haspopup="true"
-                > -->
 						<button
+							use:clickoutside
+							on:clickoutside={() => {
+								if (isProfileMenuOpen) isProfileMenuOpen = false;
+							}}
 							class="rounded-full align-middle focus:outline-none focus:ring-[3px] focus:ring-purple-200"
-							on:click={toggleProfileMenu}
+							on:click={() => {
+								isProfileMenuOpen = !isProfileMenuOpen;
+							}}
 							aria-label="Account"
 							aria-haspopup="true"
 						>
@@ -766,17 +763,8 @@
 							/>
 						</button>
 						{#if isProfileMenuOpen}
-							<!-- <template x-if="isProfileMenuOpen"> -->
-							<!-- <ul
-                    x-transition:leave="transition ease-in duration-150"
-                    x-transition:leave-start="opacity-100"
-                    x-transition:leave-end="opacity-0"
-                    x-on:click.away="!isProfileMenuOpen"
-                    x-on:keydown.escape="!closeProfileMenu"
-                    class="absolute right-0 w-56 p-2 mt-2 space-y-2 text-gray-600 bg-white border border-gray-100 rounded-md shadow-md dark:border-gray-700 dark:text-gray-300 dark:bg-gray-700"
-                    aria-label="submenu"
-                  > -->
 							<ul
+								transition:fade={{ duration: 150 }}
 								class="absolute right-0 mt-2 w-56 space-y-2 rounded-md border border-gray-100 bg-white p-2 text-gray-600 shadow-md dark:border-gray-700 dark:bg-gray-700 dark:text-gray-300"
 								aria-label="submenu"
 							>
