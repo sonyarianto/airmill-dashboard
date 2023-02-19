@@ -29,10 +29,6 @@
 		setThemeToLocalStorage(isDarkTheme);
 	}
 
-	function toggleSideMenu() {
-		isSideMenuOpen = !isSideMenuOpen;
-	}
-
 	function togglePagesMenu() {
 		isPagesMenuOpen = !isPagesMenuOpen;
 	}
@@ -626,7 +622,6 @@
 		</div>
 	</aside>
 	<div class="flex w-full flex-1 flex-col">
-		<!-- <header class="z-10 py-4 bg-white shadow-md dark:bg-gray-800"> -->
 		<header
 			class="z-10 border-b-[1px] border-gray-200 bg-white py-4 shadow-sm dark:border-gray-700 dark:bg-gray-800"
 		>
@@ -635,8 +630,8 @@
 			>
 				<!-- Mobile hamburger -->
 				<button
-					class="mr-5 -ml-1 rounded-md p-1 focus:outline-none focus:ring-[3px] focus:ring-purple-200 md:hidden"
-					on:click={toggleSideMenu}
+					class="mr-5 -ml-1 rounded-md p-1 focus:outline-none focus:ring-[3px] focus:ring-purple-200 dark:focus:ring-gray-500 md:hidden"
+					on:click={() => isSideMenuOpen = !isSideMenuOpen}
 					aria-label="Menu"
 				>
 					<svg class="h-6 w-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
