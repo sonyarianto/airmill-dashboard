@@ -608,6 +608,7 @@
 			>
 				<!-- Mobile hamburger -->
 				<button
+					type="button"
 					class="mr-5 -ml-1 rounded-md p-1 focus:outline-none focus:ring-[3px] focus:ring-purple-200 dark:focus:ring-gray-500 md:hidden"
 					on:click={() => isSideMenuOpen = !isSideMenuOpen}
 					aria-label="Menu"
