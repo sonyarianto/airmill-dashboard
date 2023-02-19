@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount, onDestroy } from 'svelte';
-	import { fade } from 'svelte/transition';
+	import { fade, fly } from 'svelte/transition';
 	import { lineChartConfig, pieChartConfig } from '../chart_config.js';
 	import { clickoutside } from '@svelte-put/clickoutside';
 	import { Chart } from 'chart.js/auto'; // uncomment this line to use chart.js instead of chart.js UMD CDN
@@ -343,13 +343,13 @@
 	</aside>
 	<!-- Mobile sidebar -->
 	<!-- Backdrop -->
+	{#if isSideMenuOpen}
 	<div
-		class:hidden={!isSideMenuOpen}
 		class="fixed inset-0 z-10 flex items-end bg-black bg-opacity-50 sm:items-center sm:justify-center"
 	/>
 	<aside
 		class="fixed inset-y-0 z-20 mt-16 w-64 flex-shrink-0 overflow-y-auto bg-white dark:bg-gray-800 md:hidden"
-		class:hidden={!isSideMenuOpen}
+		in:fly="{{ x: -200, duration: 200 }}" out:fly={{ x: -200, duration: 100 }}
 	>
 		<div class="py-4 text-gray-500 dark:text-gray-400">
 			<!-- svelte-ignore a11y-invalid-attribute -->
@@ -599,6 +599,7 @@
 			</div>
 		</div>
 	</aside>
+	{/if}
 	<div class="flex w-full flex-1 flex-col">
 		<header
 			class="z-10 border-b-[1px] border-gray-200 bg-white py-4 shadow-sm dark:border-gray-700 dark:bg-gray-800"
