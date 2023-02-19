@@ -156,7 +156,7 @@
 			<li class="relative px-6 py-3">
 				<a
 					class="inline-flex w-full items-center text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-					href="tables.html"
+					href="/tables"
 				>
 					<svg
 						class="h-5 w-5"
