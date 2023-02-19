@@ -16,7 +16,7 @@ then
 npm run dev
 ```
 
-## What's the difference with Windmill Dashboard?
+## Difference with Windmill Dashboard
 - Windmill Dashboard available in HTML (+Tailwind CSS and Alpine.js) and React, we only provide SvelteKit version.
 - Some slight layout changes just for my taste.
 
