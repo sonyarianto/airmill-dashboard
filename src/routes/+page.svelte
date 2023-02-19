@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount, onDestroy } from 'svelte';
 	import { fade } from 'svelte/transition';
-	import { lineChartConfig, pieChartConfig } from '../codes/chart_config.js';
+	import { lineChartConfig, pieChartConfig } from '../chart_config.js';
 	import { clickoutside } from '@svelte-put/clickoutside';
 	import { Chart } from 'chart.js/auto'; // uncomment this line to use chart.js instead of chart.js UMD CDN
 
@@ -11,9 +11,22 @@
 	let isProfileMenuOpen = false;
 	let isDarkTheme = false;
 
+	function getThemeFromLocalStorage() {
+		if (window.localStorage.getItem('isDarkTheme')) {
+			return JSON.parse(window.localStorage.getItem('isDarkTheme') as any);
+		}
+
+		return !!window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+	}
+
+	function setThemeToLocalStorage(value: boolean) {
+		window.localStorage.setItem('isDarkTheme', value as any);
+	}
+
 	function toggleTheme() {
 		isDarkTheme = !isDarkTheme;
 		document.documentElement.classList.toggle('dark');
+		setThemeToLocalStorage(isDarkTheme);
 	}
 
 	function toggleSideMenu() {
@@ -32,6 +45,8 @@
 	}
 
 	onMount(() => {
+		isDarkTheme = getThemeFromLocalStorage();
+
 		const pieChartContext = document.getElementById('pie');
 		new Chart(pieChartContext as any, pieChartConfig as any);
 
@@ -49,6 +64,23 @@
 </script>
 
 <svelte:head>
+	<script>
+		function getThemeFromLocalStorage() {
+			if (window.localStorage.getItem('isDarkTheme')) {
+				return JSON.parse(window.localStorage.getItem('isDarkTheme'));
+			}
+
+			return !!window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+		}
+
+		let isDarkTheme = getThemeFromLocalStorage();
+
+		if (isDarkTheme) {
+			document.documentElement.classList.add('dark');
+		} else {
+			document.documentElement.classList.remove('dark');
+		}
+	</script>
 	<title>Home</title>
 	<!-- uncomment below if you want to use the UMD CDN version -->
 	<!-- <script
