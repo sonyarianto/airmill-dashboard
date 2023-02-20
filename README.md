@@ -1,6 +1,6 @@
 # Airmill Dashboard
 
-A dashboard based on [Windmill Dashboard](https://github.com/estevanmaito/windmill-dashboard) by [Estevan Maito](https://github.com/estevanmaito). It is using SvelteKit and TailwindCSS.
+Airmill Dashboard is based on [Windmill Dashboard](https://github.com/estevanmaito/windmill-dashboard) by [Estevan Maito](https://github.com/estevanmaito). Powered by SvelteKit, TailwindCSS and other great libraries.
 
 ## How to run?
 
