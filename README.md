@@ -26,9 +26,9 @@ https://airmill-dashboard.vercel.app/
 
 ## Difference with Windmill Dashboard
 
-- Windmill Dashboard available in HTML (+Tailwind CSS and Alpine.js) and React, we only provide SvelteKit version.
-- Windmill Dashboard still using old Tailwind CSS, old Alpine.js, old Chart.js, we update all packages to the very latest version.
-- Some slight layout changes just for my taste.
+- **Windmill Dashboard** available in HTML (+Tailwind CSS and Alpine.js) and React, **Airmill Dashboard** only provide SvelteKit version.
+- **Windmill Dashboard** still using old Tailwind CSS, old Alpine.js, old Chart.js, **Airmill Dashboard** update all packages to the very latest version.
+- Some slight layout changes just for **my** taste.
 
 ## License
 
