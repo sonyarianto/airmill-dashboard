@@ -30,12 +30,6 @@ https://airmill-dashboard.vercel.app/
 - **Windmill Dashboard** still using old Tailwind CSS, old Alpine.js, old Chart.js, **Airmill Dashboard** update all packages to the very latest version.
 - Some slight layout changes just for **my** taste.
 
-## TODO
-
-- [ ] Add more pages
-- [ ] Add more components
-- [ ] Add more features
-
 ## License
 
 MIT
