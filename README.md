@@ -16,7 +16,11 @@ then
 npm run dev
 ```
 
-## Quick shot
+## Demo URL
+
+https://airmill-dashboard.vercel.app/
+
+## Screen shot
 
 ![My image](https://raw.githubusercontent.com/sonyarianto/airmill-dashboard/main/airmill_dashboard-0.1.0.png?9832732)
 
