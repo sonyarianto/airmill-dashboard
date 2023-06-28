@@ -208,8 +208,8 @@
 					<ul
 						class="mt-2 space-y-2 overflow-hidden rounded-md bg-gray-50 p-2 text-sm font-medium text-gray-500 shadow-inner dark:bg-gray-900 dark:text-gray-400"
 						aria-label="submenu"
-						in:fly={{ y: -20, duration: 250 }}
-						out:fly={{ duration: 50 }}
+						in:fly|global={{ y: -20, duration: 250 }}
+						out:fly|global={{ duration: 50 }}
 					>
 						<li
 							class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"

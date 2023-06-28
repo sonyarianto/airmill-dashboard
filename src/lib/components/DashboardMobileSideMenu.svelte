@@ -14,8 +14,8 @@
 />
 <aside
 	class="fixed inset-y-0 z-20 mt-16 w-64 flex-shrink-0 overflow-y-auto bg-white dark:bg-gray-800 md:hidden"
-	in:fly={{ x: -200, duration: 200 }}
-	out:fly={{ x: -200, duration: 100 }}
+	in:fly|global={{ x: -200, duration: 200 }}
+	out:fly|global={{ x: -200, duration: 100 }}
 >
 	<div class="py-4 text-gray-500 dark:text-gray-400">
 		<!-- svelte-ignore a11y-invalid-attribute -->
@@ -213,8 +213,8 @@
 					<ul
 						class="mt-2 space-y-2 overflow-hidden rounded-md bg-gray-50 p-2 text-sm font-medium text-gray-500 shadow-inner dark:bg-gray-900 dark:text-gray-400"
 						aria-label="submenu"
-						in:fly={{ y: -20, duration: 250 }}
-						out:fly={{ duration: 50 }}
+						in:fly|global={{ y: -20, duration: 250 }}
+						out:fly|global={{ duration: 50 }}
 					>
 						<li
 							class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"

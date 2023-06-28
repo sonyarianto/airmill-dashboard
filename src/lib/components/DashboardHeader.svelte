@@ -107,7 +107,7 @@
 				</button>
 				{#if props.isNotificationsMenuOpen}
 					<ul
-						transition:fade={{ duration: 150 }}
+						transition:fade|global={{ duration: 150 }}
 						class="absolute right-0 mt-2 w-56 space-y-2 rounded-md border border-gray-100 bg-white p-2 text-gray-600 shadow-md dark:border-gray-700 dark:bg-gray-700 dark:text-gray-300"
 					>
 						<li class="flex">
@@ -173,7 +173,7 @@
 				</button>
 				{#if props.isProfileMenuOpen}
 					<ul
-						transition:fade={{ duration: 150 }}
+						transition:fade|global={{ duration: 150 }}
 						class="absolute right-0 mt-2 w-56 space-y-2 rounded-md border border-gray-100 bg-white p-2 text-gray-600 shadow-md dark:border-gray-700 dark:bg-gray-700 dark:text-gray-300"
 						aria-label="submenu"
 					>
