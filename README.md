@@ -16,9 +16,9 @@ then
 npm run dev
 ```
 
-## Demo URL
+## Demo
 
-https://airmill-dashboard.vercel.app/
+https://airmill-dashboard.vercel.app
 
 ## Screen shot
 
@@ -29,6 +29,10 @@ https://airmill-dashboard.vercel.app/
 - **Windmill Dashboard** available in HTML (+Tailwind CSS and Alpine.js) and React, **Airmill Dashboard** only provide SvelteKit version.
 - **Windmill Dashboard** still using old Tailwind CSS, old Alpine.js, old Chart.js, **Airmill Dashboard** update all packages to the very latest version.
 - Some slight layout changes just for **my** taste.
+
+## Technical notes
+
+- Due to my limited time, some section still not ported to SvelteKit, such as Charts and Modal and also still bug on active tab. Any PR are welcome.
 
 ## License
 
